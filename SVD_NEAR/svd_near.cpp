@@ -33,9 +33,9 @@ vector<Data> train_data;
 vector<Data> cross_data; 
 
 const int neighbors[] = {-L-1, -L, -L+1, -1, 1, L-1, L, L+1};
-const double gama = 0.006; // 步长
-const double lambda = 0.02;
-const int factors = 8;
+const double gama = 0.0049; // 0.048
+const double lambda = 0.02; // 0.02
+const int factors = 12;
 const int locationSlots = 400;
 const int timeSlots = 2;
 double globalAverage = 0.0; //全局平均值
@@ -131,23 +131,23 @@ void train(){
 void init(){
     //分开train 和 cross
     // 输入数据， 计算几个平均值
-    ifstream fdata("data.txt");
-    ofstream ftrain("train.txt");
-    ofstream fcross("cross.txt");
+    // ifstream fdata("data.txt");
+    // ofstream ftrain("train.txt");
+    // ofstream fcross("cross.txt");
 
-    string s;
-    srand(time(NULL));
-    while (getline(fdata, s)) {
-        if (rand() % 100 < 15) {
-            fcross << s << endl;
-        } else {
-            ftrain << s << endl;
-        }
-    }
+    // string s;
+    // srand(time(NULL));
+    // while (getline(fdata, s)) {
+    //     if (rand() % 100 < 15) {
+    //         fcross << s << endl;
+    //     } else {
+    //         ftrain << s << endl;
+    //     }
+    // }
 
-    fdata.close();
-    ftrain.close();
-    fcross.close();
+    // fdata.close();
+    // ftrain.close();
+    // fcross.close();
 
     FILE *ft = fopen("train.txt", "r");
     FILE *fc = fopen("cross.txt", "r");
